@@ -1,0 +1,277 @@
+# mafn's i3 config file (v1) - 2015-11-07
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+
+# GENERAL
+
+# Alt key as mod
+set $mod Mod1
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. ISO 10646 = Unicode
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# For a freetype font, use pango. Example:
+# font pango:DejaVu Sans Mono 10
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Disable focus following mouse
+focus_follows_mouse nof
+
+
+# i3 KEYBINDINGS
+
+# Start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Program launcher
+# i3-dmenu-desktop (default in i3)
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# j4-dmenu-desktop (program launcher which is faster than i3-dmenu-desktop)
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -l 10"
+
+# Change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+# Alternatively: use arrow keys
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+# Alternatively: use arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split in horizontal direction
+bindsym $mod+h split h
+# Split in vertical direction
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+# Restart i3 inplace
+bindsym $mod+Shift+r restart
+
+#workspace move screen
+bindsym $mod+comma exec --no-startup-id i3-msg move workspace to output left
+bindsym $mod+period exec --no-startup-id i3-msg move workspace to output right
+
+
+# RESIZE MODE
+
+mode "resize" {
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # Same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # Precision resize
+        bindsym Shift+Left resize shrink width 1px or 1ppt
+        bindsym Shift+Down resize grow height 1px or 1ppt
+        bindsym Shift+Up resize shrink height 1px or 1ppt
+        bindsym Shift+Right resize grow width 1px or 1ppt
+
+        # Back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+# SHUTDOWN MODE
+
+mode "(L)ock, (E)xit, (R)eboot, (S)hutdown" {
+        bindsym r exec sudo reboot
+        bindsym l exec xscreensaver-command -lock; mode "default"
+        bindsym s exec sudo poweroff
+        bindsym e exit
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+e mode "(L)ock, (E)xit, (R)eboot, (S)hutdown"
+
+
+# WORKSPACES
+
+# Custom workspaces
+set $tag1 "1:desktop"
+set $tag2 "2:terminal"
+set $tag3 "3:browser"
+set $tag4 "4:programming"
+set $tag5 "5:music"
+
+# Switch to workspace bindings
+bindsym $mod+1 workspace $tag1; layout stacked
+bindsym $mod+2 workspace $tag2
+bindsym $mod+3 workspace $tag3
+bindsym $mod+4 workspace $tag4
+bindsym $mod+5 workspace $tag5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move focused container to workspace bindings
+bindsym $mod+Shift+1 move container to workspace $tag1
+bindsym $mod+Shift+2 move container to workspace $tag2
+bindsym $mod+Shift+3 move container to workspace $tag3
+bindsym $mod+Shift+4 move container to workspace $tag4
+bindsym $mod+Shift+5 move container to workspace $tag5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+
+# i3bar CONFIG
+
+# Start i3bar to display a workspace bar with custom config
+bar {
+        status_command i3status -c ~/.i3/i3status/config
+        font pango:Terminus (TTF) Medium 9
+}
+
+
+# RESIDUAL KEYBINDINGS
+
+#Volume control bindings
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec amixer set Master 5%- && killall -SIGUSR1 i3status
+
+# Simplecal binding
+bindsym $mod+c exec gsimplecal
+
+
+# AUTOSTART
+
+# Daemons
+exec --no-startup-id cinnamon-settings-daemon # cinnamon settings daemon
+exec sudo docker -d # docker daemon
+exec --no-startup-id xscreensaver -nosplash # xscreensaver daemon
+# Wallpaper
+exec --no-startup-id feh --bg-scale /usr/share/backgrounds/Numix_Name_of_the_Doctor_16_9.png
+# Startup programs
+exec --no-startup-id nm-applet # network manager
+exec --no-startup-id cinnamon-sound-applet # sound applet
+exec --no-startup-id /home/mafn/.local/bin/synergys # synergy server
+# Autostart programs in workspaces
+exec --no-startup-id i3-msg 'workspace $tag1; exec nemo --no-desktop; layout stacking; workspace $tag2; exec i3-sensible-terminal; exec i3-sensible-terminal; workspace $tag3; exec firefox;'
+# Switch to workspace 2
+exec --no-startup-id i3-msg workspace $tag2
+
+
+# GAPS SETTINGS
+
+#i3 gaps window border
+for_window[class="^.*"] border pixel 1
+#i3 gaps gap sizes
+gaps inner 10
+gaps outer 10
+
+
+# GAP EDIT MODES
+
+# Gaps edit select mode
+mode "Gaps select (i)nner (o)uter"{
+	bindsym i mode "Inner +-"
+	bindsym o mode "Outer +-"
+
+	# back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Edit inner gaps mode
+mode "Inner +-"{
+	# mod inner gap
+	bindsym plus gaps inner all plus 5
+	bindsym minus gaps inner all minus 5
+	bindsym 0 gaps inner all set 0
+
+	# precision mod inner gap
+	bindsym Shift+plus gaps inner all plus 1
+	bindsym Shift+minus gaps inner all minus 1
+
+	# back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Edit outer gaps mode
+mode "Outer +-"{
+	# mod outer gap
+	bindsym plus gaps outer all plus 5
+	bindsym minus gaps outer all minus 5
+	bindsym 0 gaps outer all set 0
+
+	# precision mod outer gap
+	bindsym Shift+plus gaps outer all plus 1
+	bindsym Shift+minus gaps outer all minus 1
+
+	# back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+g mode "Gaps select (i)nner (o)uter"
+
+
+# CUSTOM FLOATS
+
+# Fix weird floating desktop bug
+for_window [title="Desktop"] floating disable
+
+# Custom floating enablers
+for_window [class="Diffuse"] floating enable
+for_window [class="Meld"] floating enable
+for_window [class="Poedit"] floating enable
+for_window [class="Shutter"] floating enable
+
