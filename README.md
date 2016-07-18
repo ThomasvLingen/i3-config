@@ -14,6 +14,7 @@ If for some strange reason you want to use this config, you need the following:
 * [ttf-fontawesome](https://aur.archlinux.org/packages/ttf-font-awesome/)
 * [pango](http://www.pango.org/)
 * [feh](http://feh.finalrewind.org/)
+* [playerctl](https://github.com/acrisci/playerctl)
 
 Most other stuff is optional, this will (most likely) work fine without it.
 Chances are that you'll have to edit some paths in the i3 config in order to match your system though.

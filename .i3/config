@@ -185,9 +185,13 @@ bar {
 
 # RESIDUAL KEYBINDINGS
 
-#Volume control bindings
+# Media key bindings
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ && killall -SIGUSR1 i3status
 bindsym XF86AudioLowerVolume exec amixer set Master 5%- && killall -SIGUSR1 i3status
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioStop exec --no-startup-id playerctl stop
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Simplecal binding
 bindsym $mod+c exec gsimplecal
