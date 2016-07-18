@@ -85,8 +85,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 #workspace move screen
-bindsym $mod+comma exec --no-startup-id i3-msg move workspace to output left
-bindsym $mod+period exec --no-startup-id i3-msg move workspace to output right
+bindsym $mod+comma exec --no-startup-id i3-msg move workspace to output left ; exec --no-startup-id i3-msg move workspace to output down
+bindsym $mod+period exec --no-startup-id i3-msg move workspace to output right ; exec --no-startup-id i3-msg move workspace to output up
 
 
 # RESIZE MODE
