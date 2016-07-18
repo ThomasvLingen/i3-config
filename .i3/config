@@ -278,4 +278,6 @@ for_window [class="Diffuse"] floating enable
 for_window [class="Meld"] floating enable
 for_window [class="Poedit"] floating enable
 for_window [class="Shutter"] floating enable
+for_window [title=".*Figure.*"] floating enable
+for_window [class="Gitk"] floating enable
 
