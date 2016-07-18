@@ -199,8 +199,9 @@ bindsym $mod+c exec gsimplecal
 exec --no-startup-id cinnamon-settings-daemon # cinnamon settings daemon
 exec sudo docker -d # docker daemon
 exec --no-startup-id xscreensaver -nosplash # xscreensaver daemon
+exec --no-startup-id compton # Transparancy thing
 # Wallpaper
-exec --no-startup-id feh --bg-scale /usr/share/backgrounds/Numix_Name_of_the_Doctor_16_9.png
+exec --no-startup-id feh --bg-scale /usr/share/backgrounds/linuxmint/linuxmint.jpg
 # Startup programs
 exec --no-startup-id nm-applet # network manager
 exec --no-startup-id cinnamon-sound-applet # sound applet
