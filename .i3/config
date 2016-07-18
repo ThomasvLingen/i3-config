@@ -33,13 +33,13 @@ bindsym $mod+Shift+q kill
 # i3-dmenu-desktop (default in i3)
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # j4-dmenu-desktop (program launcher which is faster than i3-dmenu-desktop)
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -l 10"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -l 10 -fn 'Terminus (TTF)-9'"
 
 # Change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+# bindsym $mod+j focus left
+# bindsym $mod+k focus down
+# bindsym $mod+l focus up
+# bindsym $mod+semicolon focus right
 # Alternatively: use arrow keys
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
