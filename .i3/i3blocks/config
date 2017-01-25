@@ -1,0 +1,87 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+command=/usr/share/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+# Active window
+# awk is used to only display the last portion
+[active_window]
+command=xdotool getactivewindow getwindowname | awk -F " - " '{print $NF}'
+interval=1
+
+# Media player
+[mediaplayer]
+instance=spotify
+interval=1
+
+# Memory usage
+[memory]
+label= 
+separator=true
+interval=1
+
+# Disk usage
+# Root partition
+[disk]
+label=  
+instance=/
+interval=1
+
+# Home partition
+[disk]
+label= 
+interval=1
+
+# Network interface monitoring
+[iface]
+label= 
+instance=wlp3s0
+color=#00FF00
+interval=1
+separator=false
+
+# Signal strength
+[wifi]
+instance=wlp3s0
+interval=10
+
+# Battery indicator
+[battery]
+label= 
+interval=1
+
+# Date Time
+[time]
+label= 
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1
+
+
+# Volume indicator
+# Signal 10 is used upon raising or lowering the volume through keybindings
+[volume]
+label= 
+instance=Master
+interval=once
+signal=10
+
